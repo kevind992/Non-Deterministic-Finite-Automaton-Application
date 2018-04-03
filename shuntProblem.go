@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"bufio"
+	"os"
+)
 
 //import "fmt"
 
@@ -141,6 +145,19 @@ func addState(l []*state, s *state, a *state) []*state {
 	return l
 }
 
-func main()  {
-	fmt.Println(pomatch("ab.c*|", "def"))
+//A function for getting user input from the console
+func getInput() string{
+
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Please Enter Input: ")
+	input, _ := reader.ReadString('\n')
+
+	return input
+}
+func main(){
+
+	//ab.c*|
+	//def
+
+	fmt.Println(pomatch(getInput(), getInput()))
 }
