@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"bufio"
-	"os"
 )
 
 //import "fmt"
@@ -101,7 +99,9 @@ func poregtonfa(pofix string) *nfa{
 	return nfastack[0]
 }
 
-func pomatch(po string , s string) bool{
+func match(po string , s string) bool{
+
+
 
 	ismatch := false
 
@@ -146,18 +146,39 @@ func addState(l []*state, s *state, a *state) []*state {
 }
 
 //A function for getting user input from the console
-func getInput() string{
-
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Please Enter Input: ")
-	input, _ := reader.ReadString('\n')
+func getOptionInput() int{
+	
+	var input int
+	fmt.Scanln(&input)
 
 	return input
 }
-func main(){
+func option() {
 
-	//ab.c*|
-	//def
+	fmt.Println(" Select 1 for Pofix \n Select 2 for Infix \n Select 0 to Exit.")
+	opt := getOptionInput()
 
-	fmt.Println(pomatch(getInput(), getInput()))
+	for opt != 0 {
+
+		switch opt {
+		case 1:
+			fmt.Println(match("ab.c*|", "abc"))
+			break
+		case 2:
+			fmt.Println(match(intoport("a.b.c"), "abc"))
+			break
+		case 3:
+			break
+		default:
+			fmt.Println(" Select 1 for Pofix \n Select 2 for Infix \n Select 0 to Exit.")
+		}
+		fmt.Println(" Select 1 for Pofix \n Select 2 for Infix \n Select 0 to Exit.")
+		opt = getOptionInput()
+
+	}
+}
+func main() {
+
+	option()
+
 }
