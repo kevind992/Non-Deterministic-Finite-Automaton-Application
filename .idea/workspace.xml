@@ -17,8 +17,8 @@
       <file leaf-file-name="shuntProblem.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/shuntProblem.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="161" column="1" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
+            <state relative-caret-position="178">
+              <caret line="194" column="87" selection-start-line="194" selection-start-column="87" selection-end-line="194" selection-end-column="87" />
               <folding>
                 <element signature="e#14#40#0" expanded="true" />
               </folding>
@@ -107,16 +107,31 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="go build shuntProblem.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Non-Deterministic-Finite-Automaton-Application" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/shuntProblem.go" />
+      <directory value="$PROJECT_DIR$/" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build shuntProblem.go" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24980484" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1459797" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32994923" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
@@ -141,7 +156,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit / shuntProblem file added" />
     <MESSAGE value="Added regex match function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added regex match function" />
+    <MESSAGE value="Added user input through the console." />
+    <MESSAGE value="Different options added. i.e. infix or pofix." />
+    <option name="LAST_COMMIT_MESSAGE" value="Different options added. i.e. infix or pofix." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/shuntProblem.go">
@@ -156,8 +173,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/shuntProblem.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="161" column="1" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
+        <state relative-caret-position="178">
+          <caret line="194" column="87" selection-start-line="194" selection-start-column="87" selection-end-line="194" selection-end-column="87" />
           <folding>
             <element signature="e#14#40#0" expanded="true" />
           </folding>

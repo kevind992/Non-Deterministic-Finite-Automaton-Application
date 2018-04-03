@@ -147,38 +147,55 @@ func addState(l []*state, s *state, a *state) []*state {
 
 //A function for getting user input from the console
 func getOptionInput() int{
-	
+
 	var input int
 	fmt.Scanln(&input)
 
 	return input
 }
+func getInput()string{
+
+	var input string
+	fmt.Scanln(&input)
+
+	return input
+
+}
 func option() {
 
+	fmt.Println("================================================================")
 	fmt.Println(" Select 1 for Pofix \n Select 2 for Infix \n Select 0 to Exit.")
+	fmt.Println("================================================================")
 	opt := getOptionInput()
 
 	for opt != 0 {
 
 		switch opt {
 		case 1:
-			fmt.Println(match("ab.c*|", "abc"))
+			pofixExp := "ab.c*|"
+			fmt.Println("Enter a String: ")
+			fmt.Println("Polix Expression is ", pofixExp)
+			fmt.Println("================================================================")
+			fmt.Println("Result: ",match(pofixExp, getInput()))
 			break
 		case 2:
-			fmt.Println(match(intoport("a.b.c"), "abc"))
-			break
-		case 3:
+			infixExp := "a.b.c"
+			fmt.Println("Enter a String: ")
+			fmt.Println("Infix Expression is", infixExp)
+			fmt.Println("================================================================")
+			fmt.Println("Result: ",match(intoport(infixExp), getInput()))
 			break
 		default:
+			fmt.Println("================================================================")
 			fmt.Println(" Select 1 for Pofix \n Select 2 for Infix \n Select 0 to Exit.")
+			fmt.Println("================================================================")
 		}
+		fmt.Println("================================================================")
 		fmt.Println(" Select 1 for Pofix \n Select 2 for Infix \n Select 0 to Exit.")
+		fmt.Println("================================================================")
 		opt = getOptionInput()
-
 	}
 }
 func main() {
-
 	option()
-
 }
