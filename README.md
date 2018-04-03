@@ -17,7 +17,7 @@ Once both has been installed you are ready to run the go program Open your Conso
 
 Once the repository has been cloned, navigate into the problem sheet folder. To build the GO file enter:
 
-   $ go build shuntProblem.go
+    $ go build shuntProblem.go
 
 To run the program, enter:
 
