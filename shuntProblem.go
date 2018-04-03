@@ -1,17 +1,19 @@
+// Author: Kevin Delassus - G00270791
+// Project Discription: A GoLang application which can build a non-deterministic
+// finite automaton (NFA) from a regular expression.
+
 package main
 
 import (
 	"fmt"
 )
 
-//import "fmt"
-
+//Struts which represent the NFA as a linked collection.
 type state struct {
 	symbol rune
 	edge1 *state
 	edge2 *state
 }
-
 type nfa struct {
 	initial *state
 	accept *state
@@ -56,7 +58,8 @@ func poregtonfa(pofix string) *nfa{
 
 	for _, r := range pofix {
 		switch r {
-		case '.':
+		case '.': // Catenation
+
 			frag2 := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
 			frag1 := nfastack[len(nfastack)-1]
@@ -65,7 +68,8 @@ func poregtonfa(pofix string) *nfa{
 			frag1.accept.edge1 = frag2.initial
 
 			nfastack = append(nfastack, &nfa{initial:frag1.initial, accept:frag2.accept})
-		case '|':
+		case '|': //Alternation
+
 			frag2 := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
 			frag1 := nfastack[len(nfastack)-1]
@@ -78,12 +82,7 @@ func poregtonfa(pofix string) *nfa{
 
 
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
-		case '*':
-
-			/*e = pop();
-			s = state(Split, e.start, NULL);
-			patch(e.out, s);
-			push(frag(s, list1(&s->out1)));*/
+		case '*': //Zero or More
 
 			frag := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
@@ -94,7 +93,8 @@ func poregtonfa(pofix string) *nfa{
 			frag.accept.edge2 = &accept
 
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
-		case '+':
+
+		case '+': //One or More
 
 			frag := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
@@ -105,14 +105,14 @@ func poregtonfa(pofix string) *nfa{
 
 			nfastack = append(nfastack,&nfa{initial: frag.initial, accept: &accept})
 
-		default:
+		default: // Literal Characters
 			accept := state{}
 			initial := state{symbol:r, edge1: &accept }
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
 		}
 
 	}
-
+	// Returning nfastack at first index
 	return nfastack[0]
 }
 
@@ -157,7 +157,7 @@ func addState(l []*state, s *state, a *state) []*state {
 	}
 	return l
 }
-//A function for getting user input from the console
+//A function for getting user input from the console for selecting option
 func getOptionInput() int{
 
 	var input int
@@ -165,6 +165,7 @@ func getOptionInput() int{
 
 	return input
 }
+// A function for getting a string from the user through the console
 func getInput()string{
 
 	var input string
@@ -173,41 +174,61 @@ func getInput()string{
 	return input
 
 }
+// A function for selecting the available options i.e. pofix or infix notation
 func option() {
 
+	// Displaying the options to the user
 	fmt.Println("================================================================")
 	fmt.Println("Select 1 for Pofix\nSelect 2 for Infix\nSelect 0 to Exit")
 	fmt.Println("================================================================")
+	//Getting user input
 	opt := getOptionInput()
 
+	// Keep looping unless the user enters 0
 	for opt != 0 {
 
 		switch opt {
-		case 1:
+		case 1: // Pofix
+			// The predefined Pofix Expression
 			pofixExp := "ab.c*|"
+			//Displaying the predefined pofix expression to the user
 			fmt.Println("Polix Expression is ", pofixExp)
+			//Asking user for a string
 			fmt.Println("Enter a String: ")
+			// Running the match function and displaying the result to the user
 			fmt.Println("================================================================\n" +
 				"Result: ",match(pofixExp, getInput()))
-			break
-		case 2:
+
+		case 2: // Infix
+
+			// The predefined Infix Expression
 			infixExp := "a.b.c"
+			// Displaying the predefined infix expression to the user
 			fmt.Println("Infix Expression is", infixExp)
+			// Asking the user for a string
 			fmt.Println("Enter a String: ")
+			// Running the match and intoport function and displaying the result to the user
 			fmt.Println("================================================================\n" +
 				"Result: ",match(intoport(infixExp), getInput()))
-			break
-		default:
+
+		default: // Invalid Character
+
+			// Displaying the options if the user enters a wrong character
 			fmt.Println("================================================================")
 			fmt.Println("Select 1 for Pofix \nSelect 2 for Infix\nSelect 0 to Exit")
 			fmt.Println("================================================================")
 		}
+
+		// Once the user has been exited from the switch statement the user is shown the options again.
 		fmt.Println("================================================================")
 		fmt.Println("Select 1 for Pofix\nSelect 2 for Infix\nSelect 0 to Exit")
 		fmt.Println("================================================================")
+		// Getting user input
 		opt = getOptionInput()
 	}
 }
+// Main function
 func main() {
+	//Displaying the options to the user
 	option()
 }
