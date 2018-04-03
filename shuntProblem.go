@@ -79,6 +79,12 @@ func poregtonfa(pofix string) *nfa{
 
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
 		case '*':
+
+			/*e = pop();
+			s = state(Split, e.start, NULL);
+			patch(e.out, s);
+			push(frag(s, list1(&s->out1)));*/
+
 			frag := nfastack[len(nfastack)-1]
 			nfastack = nfastack[:len(nfastack)-1]
 
@@ -88,6 +94,17 @@ func poregtonfa(pofix string) *nfa{
 			frag.accept.edge2 = &accept
 
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
+		case '+':
+
+			frag := nfastack[len(nfastack)-1]
+			nfastack = nfastack[:len(nfastack)-1]
+			accept := state{}
+			//initial := state{edge1: frag.initial, edge2:&accept}
+			frag.accept.edge1 = frag.initial
+			frag.accept.edge2 = &accept
+
+			nfastack = append(nfastack,&nfa{initial: frag.initial, accept: &accept})
+
 		default:
 			accept := state{}
 			initial := state{symbol:r, edge1: &accept }
@@ -101,8 +118,6 @@ func poregtonfa(pofix string) *nfa{
 
 func match(po string , s string) bool{
 
-
-
 	ismatch := false
 
 	ponfa := poregtonfa(po)
@@ -110,9 +125,7 @@ func match(po string , s string) bool{
 	current := []*state{}
 	next := []*state{}
 
-
 	current = addState(current[:], ponfa.initial, ponfa.accept)
-
 
 	for _, r := range s{
 		for _, c := range current{
@@ -144,7 +157,6 @@ func addState(l []*state, s *state, a *state) []*state {
 	}
 	return l
 }
-
 //A function for getting user input from the console
 func getOptionInput() int{
 
@@ -164,7 +176,7 @@ func getInput()string{
 func option() {
 
 	fmt.Println("================================================================")
-	fmt.Println(" Select 1 for Pofix \n Select 2 for Infix \n Select 0 to Exit.")
+	fmt.Println("Select 1 for Pofix\nSelect 2 for Infix\nSelect 0 to Exit")
 	fmt.Println("================================================================")
 	opt := getOptionInput()
 
@@ -187,11 +199,11 @@ func option() {
 			break
 		default:
 			fmt.Println("================================================================")
-			fmt.Println(" Select 1 for Pofix \n Select 2 for Infix \n Select 0 to Exit.")
+			fmt.Println("Select 1 for Pofix \nSelect 2 for Infix\nSelect 0 to Exit")
 			fmt.Println("================================================================")
 		}
 		fmt.Println("================================================================")
-		fmt.Println(" Select 1 for Pofix \n Select 2 for Infix \n Select 0 to Exit.")
+		fmt.Println("Select 1 for Pofix\nSelect 2 for Infix\nSelect 0 to Exit")
 		fmt.Println("================================================================")
 		opt = getOptionInput()
 	}
