@@ -173,17 +173,17 @@ func option() {
 		switch opt {
 		case 1:
 			pofixExp := "ab.c*|"
-			fmt.Println("Enter a String: ")
 			fmt.Println("Polix Expression is ", pofixExp)
-			fmt.Println("================================================================")
-			fmt.Println("Result: ",match(pofixExp, getInput()))
+			fmt.Println("Enter a String: ")
+			fmt.Println("================================================================\n" +
+				"Result: ",match(pofixExp, getInput()))
 			break
 		case 2:
 			infixExp := "a.b.c"
-			fmt.Println("Enter a String: ")
 			fmt.Println("Infix Expression is", infixExp)
-			fmt.Println("================================================================")
-			fmt.Println("Result: ",match(intoport(infixExp), getInput()))
+			fmt.Println("Enter a String: ")
+			fmt.Println("================================================================\n" +
+				"Result: ",match(intoport(infixExp), getInput()))
 			break
 		default:
 			fmt.Println("================================================================")
