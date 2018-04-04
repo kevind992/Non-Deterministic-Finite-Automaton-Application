@@ -20,29 +20,39 @@ type nfa struct {
 	initial *state
 	accept *state
 }
-
+// Shunting Yard Algorithm
+// Adapted from : https://web.microsoftstream.com/video/9d83a3f3-bc4f-4bda-95cc-b21c8e67675e
 func intoport(infix string) string{
 
+	// Creating a map which maps special characters into integers
 	specials := map[rune]int{'*': 10, '.':9,'|':8}
-
+	// Pofix and s is a empty array of runes
 	pofix, s := []rune{}, []rune{}
 
+	// Loop over infix string
 	for _, r := range infix{
-		switch{
 
-		case r == '(':
+		switch{
+		case r == '(': // if the the character is open bracket
+			// Adding s to the stack
 			s = append(s,r)
-		case r == ')':
+		case r == ')': // if the character is closed bracket
+			// Popping everything off the stack until we get a closing bracket
 			for s[len(s)-1] != '('{
+				// Add whatever is before the closing bracket
 				pofix, s = append(pofix, s[len(s)-1]), s[:len(s)-1]
 			}
+			// Discard bracket
 			s = s[:len(s)-1]
-		case specials[r] > 0:
+		case specials[r] > 0: // if the character integer is greater then 0
+			//
 			for len(s) > 0 && specials[r] <= specials[s[len(s)-1]]{
+				//get rid of last element on stack
 				pofix, s = append(pofix, s[len(s)-1]), s[:len(s)-1]
 			}
 			s = append(s,r)
-		default:
+		default: // Anything else
+			// Taking the character and sticking it on the end of polix array
 			pofix = append(pofix, r)
 		}
 	}
@@ -51,6 +61,7 @@ func intoport(infix string) string{
 		pofix, s = append(pofix, s[len(s)-1]), s[:len(s)-1]
 	}
 
+	// returning result which is being cast to a string
 	return string(pofix)
 }
 // Thompson Algorithm

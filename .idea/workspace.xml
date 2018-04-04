@@ -17,8 +17,8 @@
       <file leaf-file-name="shuntProblem.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/shuntProblem.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="179" column="19" selection-start-line="179" selection-start-column="19" selection-end-line="179" selection-end-column="19" />
+            <state relative-caret-position="357">
+              <caret line="49" column="50" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
               <folding>
                 <element signature="e#14#40#0" expanded="true" />
                 <element signature="n#!!block;n#poregtonfa#0" />
@@ -166,7 +166,13 @@
     <MESSAGE value="'+' algorithm added to poregtonfa function" />
     <MESSAGE value="Comments added" />
     <MESSAGE value="poregtonfa function (Thompson's Algorithm) commented" />
-    <option name="LAST_COMMIT_MESSAGE" value="poregtonfa function (Thompson's Algorithm) commented" />
+    <MESSAGE value="match and addState function commented" />
+    <option name="LAST_COMMIT_MESSAGE" value="match and addState function commented" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/shuntProblem.go">
@@ -185,8 +191,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/shuntProblem.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="179" column="19" selection-start-line="179" selection-start-column="19" selection-end-line="179" selection-end-column="19" />
+        <state relative-caret-position="357">
+          <caret line="49" column="50" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
           <folding>
             <element signature="e#14#40#0" expanded="true" />
             <element signature="n#!!block;n#poregtonfa#0" />
