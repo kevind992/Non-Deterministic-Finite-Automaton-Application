@@ -2,6 +2,8 @@
 // Project Discription: A GoLang application which can build a non-deterministic
 // finite automaton (NFA) from a regular expression.
 
+// Code adapted from : https://swtch.com/~rsc/regexp/regexp1.html
+
 package main
 
 import (
@@ -51,7 +53,7 @@ func intoport(infix string) string{
 
 	return string(pofix)
 }
-
+// Thompson Algorithm
 func poregtonfa(pofix string) *nfa{
 
 	nfastack := []*nfa{}
@@ -59,58 +61,74 @@ func poregtonfa(pofix string) *nfa{
 	for _, r := range pofix {
 		switch r {
 		case '.': // Catenation
-
+			// Popping a character off the nfa stack
 			frag2 := nfastack[len(nfastack)-1]
+			// Removing that last item from the stack
 			nfastack = nfastack[:len(nfastack)-1]
+			// Popping another character from the nfa stack
 			frag1 := nfastack[len(nfastack)-1]
+			// Removing that last item from the stack
 			nfastack = nfastack[:len(nfastack)-1]
-
+			// Concatenate the two frags
 			frag1.accept.edge1 = frag2.initial
-
+			//Pushes a new fragment to the NFA stack which contains frag1 initial state and frag2 accept state
 			nfastack = append(nfastack, &nfa{initial:frag1.initial, accept:frag2.accept})
 		case '|': //Alternation
-
+			// Popping a character off the nfa stack
 			frag2 := nfastack[len(nfastack)-1]
+			// Removing that last item from the stack
 			nfastack = nfastack[:len(nfastack)-1]
+			// Popping another character from the nfa stack
 			frag1 := nfastack[len(nfastack)-1]
+			// Removing that last item from the stack
 			nfastack = nfastack[:len(nfastack)-1]
-
+			// Creating a new initial state with two edges which point at the initial states of the fragments
 			initial := state{edge1: frag1.initial, edge2: frag2.initial}
+			//Creating a new state
 			accept := state{}
+			// Joining the states
 			frag1.accept.edge1 = &accept
 			frag2.accept.edge1 = &accept
-
-
+			// Popping the new fragment on the NFA stack
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
 		case '*': //Zero or More
-
+			// Popping a character off the nfa stack
 			frag := nfastack[len(nfastack)-1]
+			// Removing that last item from the stack
 			nfastack = nfastack[:len(nfastack)-1]
-
+			//Creating a new state
 			accept := state{}
+			// Creating a new initial state with one edges which point at the accept states and frag which points at the initial state of the fragments
 			initial := state{edge1: frag.initial, edge2:&accept}
+			// Joining the states
 			frag.accept.edge1 = frag.initial
 			frag.accept.edge2 = &accept
-
+			// Popping the new fragment on the NFA stack
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
 
 		case '+': //One or More
-
+			// Popping a character off the nfa stack
 			frag := nfastack[len(nfastack)-1]
+			// Removing that last item from the stack
 			nfastack = nfastack[:len(nfastack)-1]
+			//Creating a new accept state
 			accept := state{}
 			//initial := state{edge1: frag.initial, edge2:&accept}
+			// Joining the states
 			frag.accept.edge1 = frag.initial
 			frag.accept.edge2 = &accept
-
+			// Popping the new fragment on the NFA stack
+			// The new fragment is the old fragment with two new extra states
 			nfastack = append(nfastack,&nfa{initial: frag.initial, accept: &accept})
 
 		default: // Literal Characters
+			// Creating a new accept state
 			accept := state{}
+			// Creating a new initial state  which set the symbol to r, and edge1 points to accept state
 			initial := state{symbol:r, edge1: &accept }
+			//Popping the new fragment onto the NFA stack
 			nfastack = append(nfastack, &nfa{initial: &initial, accept: &accept})
 		}
-
 	}
 	// Returning nfastack at first index
 	return nfastack[0]
@@ -143,8 +161,11 @@ func match(po string , s string) bool{
 		}
 	}
 
+	// Returning the result
 	return  ismatch
 }
+// Takes the current slice and adds state s and goes to s checking
+// if its one of the states with e arrows coming from it
 func addState(l []*state, s *state, a *state) []*state {
 
 	l = append(l,s)
