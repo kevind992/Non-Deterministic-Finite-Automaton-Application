@@ -28,3 +28,6 @@ For both Infix and Pofix, expressions are already predetermined. This can be cha
 To enter a Pofix notation select '1' , for a infix notation select '2' or to exit select '0'.
 A string needs to be entered to see if it matches the expression. Once the string is entered a result of true or false will be displayed.
 
+## References
+
+https://swtch.com/~rsc/regexp/regexp1.html
