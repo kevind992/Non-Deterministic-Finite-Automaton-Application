@@ -133,49 +133,58 @@ func poregtonfa(pofix string) *nfa{
 	// Returning nfastack at first index
 	return nfastack[0]
 }
-
+// A function which uses the poregtonfa function to determine whether a regular expression
+// matches a string.
 func match(po string , s string) bool{
-
+	// Setting result variable ismatch to false
 	ismatch := false
-
+	// Calling the poregtonfa function and assigning ponfa with the return value
 	ponfa := poregtonfa(po)
-
+	// Creating an array of pointers to state
 	current := []*state{}
 	next := []*state{}
 
+	// finding out the initial state
 	current = addState(current[:], ponfa.initial, ponfa.accept)
 
+	// Looping through s a character at a time
 	for _, r := range s{
+		// Looping through current state
 		for _, c := range current{
+			// If c.symbol is the same current symbol that im currently reading
 			if c.symbol == r {
+				// Using add state function and storing the result in next
 				next = addState(next[:], c.edge1, ponfa.accept)
 			}
 		}
+		// Swapping current with next
 		current, next = next, []*state{}
 	}
-
+	// Loop through the current array
 	for _, c := range current{
+		// if the state that im running through in the currant array is equaled to the accept state of ponfa.
 		if c == ponfa.accept {
+			// Set ismatch to true
 			ismatch = true
+			//break out of for loop
 			break
 		}
 	}
-
 	// Returning the result
 	return  ismatch
 }
 // Takes the current slice and adds state s and goes to s checking
 // if its one of the states with e arrows coming from it
 func addState(l []*state, s *state, a *state) []*state {
-
+	// Append the state that has been passed in
 	l = append(l,s)
-
 	if s != a && s.symbol == 0{
 		l = addState(l, s.edge1, a)
 		if s.edge2 != nil {
 			l = addState(l, s.edge2, a)
 		}
 	}
+	// returning the list of pointers
 	return l
 }
 //A function for getting user input from the console for selecting option
