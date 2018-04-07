@@ -41,6 +41,16 @@ For both Infix and Pofix, expressions are already predetermined. This can be cha
 To enter a Pofix notation select '1' , for a infix notation select '2' or to exit select '0'.
 A string needs to be entered to see if it matches the expression. Once the string is entered a result of true or false will be displayed.
 
+## Example of Running Code
+
+- Example 1
+
+![newsnapshot_1](https://user-images.githubusercontent.com/31921534/38460544-00394922-3ab4-11e8-93a3-384130b9707d.JPG)
+
+- Example 2
+
+![newsnapshot_2](https://user-images.githubusercontent.com/31921534/38460549-1bfa6efc-3ab4-11e8-9eff-9ace94db36fb.JPG)
+
 ## Research and Coding
 
 Before I attempted coding out the problem I did some research on on Regex and the Shunting Yard and Thompson's algoritms
@@ -56,7 +66,7 @@ I coded along side his videos taking notes along the way.
 
 ## Documented Extras
 
-- Added an option to pick between infix and postfix, once the option was pick you would be prompted to enter the a string to see if it matches with the expression.
+- Added an option to pick between infix and postfix. Once the option was picked you would be prompted to enter a string to see if it   matches with the expression given.
 - Added the '+' opperator into Thompsons algorithm
 
 ```
