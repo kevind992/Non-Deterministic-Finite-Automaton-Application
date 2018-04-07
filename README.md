@@ -9,6 +9,7 @@ A regular expression is a string containing a series of characters, some of whic
 Other special characters you might consider allowing as input are brackets “()” which can be used for grouping, “+” which means “at least one of”, and “?” which means “zero or one of”. You might also decide to remove the concatenation character, so that 1.0 becomes 10, with the concatenation implicit.
 You may initially restrict the non-special characters your program works with to 0 and 1, if you wish. However, you should at least attempt to expand these to all of the digits, and the characters a to z, and A to Z.
 You are expected to be able to break this project into a number of smaller tasks that are easier to solve, and to plug these together after they have been completed. You might do that for this project as follows:
+
 1. Parse the regular expression from infix to postfix notation.
 2. Build a series of small NFA’s for parts of the regular expression.
 3. Use the smaller NFA’s to create the overall NFA.
@@ -86,6 +87,12 @@ case '+': //One or More
 			nfastack = append(nfastack,&nfa{initial: frag.initial, accept: &accept})
 ```			
 
+- I included the Shunting Yard Algorithm into my project by including the following code
+
+```
+match(intoport(infixExp), getInput()))
+```
+
 ## Technology User
 
 The Go Programming Language
@@ -96,6 +103,10 @@ I coded using JetBrains GoLand
 
 Git Distributed Version Control System
 - https://git-scm.com/
+
+## Recommendations for Future Development
+
+- I would include different go files instead of having all the code in one go file. The main and option function could have been on its own and the the Shunting Yard and Thompsons Algorithms could have had another go file. It would make the code alot less cluttered.
 
 ## References
 - https://swtch.com/~rsc/regexp/regexp1.html
