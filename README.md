@@ -54,10 +54,38 @@ Before I attempted coding out the problem I did some research on on Regex and th
 After I compleated researching I started following weekly tutorial videos which our Graph Theory lecture provided us with.
 I coded along side his videos taking notes along the way.
 
+## Documented Extras
+
+- Added an option to pick between infix and postfix, once the option was pick you would be prompted to enter the a string to see if it matches with the expression.
+- Added the '+' opperator into Thompsons algorithm
+
+```
+case '+': //One or More
+			// Popping a character off the nfa stack
+			frag := nfastack[len(nfastack)-1]
+			// Removing that last item from the stack
+			nfastack = nfastack[:len(nfastack)-1]
+			//Creating a new accept state
+			accept := state{}
+			//initial := state{edge1: frag.initial, edge2:&accept}
+			// Joining the states
+			frag.accept.edge1 = frag.initial
+			frag.accept.edge2 = &accept
+			// Popping the new fragment on the NFA stack
+			// The new fragment is the old fragment with two new extra states
+			nfastack = append(nfastack,&nfa{initial: frag.initial, accept: &accept})
+```			
+
 ## Technology User
+
+The Go Programming Language
+- https://golang.org/
 
 I coded using JetBrains GoLand
 - https://www.jetbrains.com/go/
+
+Git Distributed Version Control System
+- https://git-scm.com/
 
 ## References
 - https://swtch.com/~rsc/regexp/regexp1.html
