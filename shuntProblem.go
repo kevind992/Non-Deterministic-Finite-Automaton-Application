@@ -220,7 +220,7 @@ func option() {
 
 	// Displaying the options to the user
 	fmt.Println("================================================================")
-	fmt.Println("Select 1 for Posfix\nSelect 2 for Infix\nSelect 0 to Exit")
+	fmt.Println("Select 1 for Postfix\nSelect 2 for Infix\nSelect 0 to Exit")
 	fmt.Println("================================================================")
 	//Getting user input
 	opt := getOptionInput()
