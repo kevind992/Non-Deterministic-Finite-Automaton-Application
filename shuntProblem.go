@@ -220,7 +220,7 @@ func option() {
 
 	// Displaying the options to the user
 	fmt.Println("================================================================")
-	fmt.Println("Select 1 for Pofix\nSelect 2 for Infix\nSelect 0 to Exit")
+	fmt.Println("Select 1 for Posfix\nSelect 2 for Infix\nSelect 0 to Exit")
 	fmt.Println("================================================================")
 	//Getting user input
 	opt := getOptionInput()
@@ -233,7 +233,7 @@ func option() {
 			// The predefined Pofix Expression
 			pofixExp := "ab.c*|"
 			//Displaying the predefined pofix expression to the user
-			fmt.Println("Polix Expression is ", pofixExp)
+			fmt.Println("Postfix Expression is ", pofixExp)
 			//Asking user for a string
 			fmt.Println("Enter a String: ")
 			// Running the match function and displaying the result to the user
@@ -256,13 +256,13 @@ func option() {
 
 			// Displaying the options if the user enters a wrong character
 			fmt.Println("================================================================")
-			fmt.Println("Select 1 for Pofix \nSelect 2 for Infix\nSelect 0 to Exit")
+			fmt.Println("Select 1 for Postfix \nSelect 2 for Infix\nSelect 0 to Exit")
 			fmt.Println("================================================================")
 		}
 
 		// Once the user has been exited from the switch statement the user is shown the options again.
 		fmt.Println("================================================================")
-		fmt.Println("Select 1 for Pofix\nSelect 2 for Infix\nSelect 0 to Exit")
+		fmt.Println("Select 1 for Postfix\nSelect 2 for Infix\nSelect 0 to Exit")
 		fmt.Println("================================================================")
 		// Getting user input
 		opt = getOptionInput()
