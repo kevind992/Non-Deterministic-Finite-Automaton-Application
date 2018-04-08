@@ -86,7 +86,7 @@ case '+': //One or More
 			// The new fragment is the old fragment with two new extra states
 			nfastack = append(nfastack,&nfa{initial: frag.initial, accept: &accept})
 ```			
-
+- Added '?' opperator into Thompsons algorithm
 - I included the Shunting Yard Algorithm into my project by including the following code
 
 ```
